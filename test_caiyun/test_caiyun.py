@@ -14,12 +14,12 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 
 
 def setup():
-    print("=======test_case1 set up=======")
+    print("=======test_case set up=======")
 
 
 def teardown():
     # driver.quit()
-    print("=======test_case1 tear down=======")
+    print("=======test_case tear down=======")
 
 
 # 语言描述显示
@@ -30,7 +30,7 @@ def test_case1():
     current_url = driver.current_url
     num = re.findall("#(.*)", current_url)[0]
     # num = re.search("#(.*)", current_url)
-    print(num)
+    # print(num)
     longitude = num.split(",")[0]
     latitude = num.split(",")[1]
     # 这种写法不用导入By
@@ -46,18 +46,21 @@ def test_case1():
     response = requests.get(url=url)
     res_dict = json.loads(response.content)
     tip = res_dict['result']['forecast_keypoint']
+    # tip = res_dict['result']['minutely']['description']
     # print(tip)
     assert_equal(web_tip, tip)
     case2(res_dict)
     case3(longitude, latitude)
     # assert_equal(web_tem, tem)
+    case4(res_dict)
+    case5(res_dict)
 
 
 # 温度显示
 def case2(res_dict):
     print("================test_case2============")
     tem = res_dict['result']['realtime']['temperature']
-    tem = str(int(round(tem))) + "°"
+    tem = str(round(tem)) + "°"
     # print(tem)
     web_tem = driver.find_elements(By.XPATH, "//div[@class='temp']/span")[0].text
     assert_equal(web_tem, tem)
@@ -98,3 +101,29 @@ def case3(longitude, latitude):
         web_radar.append(pic3)
     # print(web_radar)
     driver.find_elements_by_id("switch")[0].click()
+    assert_equal(web_radar, radar)
+
+
+# 空气质量指数和状态
+def case4(res_dict):
+    # print(res_dict)
+    print("================test_case4============")
+    quality_num = res_dict['result']['realtime']['air_quality']['aqi']['chn']
+    # print(round(quality_num))
+    quality_num = str(round(quality_num))
+    quality_status = res_dict['result']['realtime']['air_quality']['description']['chn']
+    # print(quality_status)
+    web_quality_num = driver.find_elements_by_xpath("//div[@class='temp']/span")[0].text
+    # print(web_quality_num)
+    web_quality_status = driver.find_elements_by_xpath("//div[@class='temp']/small")[0].text
+    # print(web_quality_status)
+    assert_equal(web_quality_num, quality_num)
+    assert_equal(web_quality_status, quality_status)
+
+
+# 空气语言描述显示
+def case5(res_dict):
+    print("================test_case5============")
+    aqi_tip = res_dict['result']['hourly']['description']
+    web_aqi_tip = driver.find_elements_by_xpath("//div[@class='desc']")[1].text
+    assert_equal(web_aqi_tip, aqi_tip)
