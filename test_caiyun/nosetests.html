@@ -72,7 +72,7 @@ section:target .test-details {
             <tr>
                 <th>Class</th>
                 <th>Fail</th>
-                <th>Error</th>
+                <th class="failed">Error</th>
                 <th>Skip</th>
                 <th>Success</th>
                 <th>Total</th>
@@ -80,28 +80,113 @@ section:target .test-details {
                 <tr>
                     <td>test_caiyun</td>
                     <td>0</td>
+                    <td class="failed">1</td>
                     <td>0</td>
                     <td>0</td>
-                    <td>1</td>
                     <td>1</td>
                 </tr>
             <tr>
                 <td><strong>Total</strong></td>
                 <td>0</td>
+                <td class="failed">1</td>
                 <td>0</td>
                 <td>0</td>
-                <td>1</td>
                 <td>1</td>
             </tr>
         </table>
     </section>
     <h1>Failure details</h1>
+            <section>
+                <h2>test_caiyun (0 failures, 1 errors)</h2>
+                <div>
+                        <section id="test_caiyun:test_case1">
+                            <h3>test_case1: <strong>selenium.common.exceptions.NoSuchWindowException</strong></h3>
+                            <div class="test-details">
+                                <h4>Traceback</h4>
+                                <pre class="traceback">Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/case.py", line 59, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/case.py", line 615, in run
+    testMethod()
+  File "/Users/yangjingjing/.virtualenvs/flask_py3/lib/python3.7/site-packages/nose/case.py", line 198, in runTest
+    self.test(*self.arg)
+  File "/Users/yangjingjing/projects/webtest_learn/web_selenium/test_caiyun/test_caiyun.py", line 30, in test_case1
+    current_url = driver.current_url
+  File "/Users/yangjingjing/.virtualenvs/flask_py3/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 669, in current_url
+    return self.execute(Command.GET_CURRENT_URL)['value']
+  File "/Users/yangjingjing/.virtualenvs/flask_py3/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yangjingjing/.virtualenvs/flask_py3/lib/python3.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=87.0.4280.88)
+
+-------------------- >> begin captured stdout << ---------------------
+================test_case1============
+
+--------------------- >> end captured stdout << ----------------------
+-------------------- >> begin captured logging << --------------------
+WDM: INFO: Current google-chrome version is 87.0.4280
+WDM: INFO: Get LATEST driver version for 87.0.4280
+urllib3.connectionpool: DEBUG: Starting new HTTP connection (1): chromedriver.storage.googleapis.com:80
+urllib3.connectionpool: DEBUG: http://chromedriver.storage.googleapis.com:80 "GET /LATEST_RELEASE_87.0.4280 HTTP/1.1" 200 12
+WDM: INFO: Driver [/Users/yangjingjing/.wdm/drivers/chromedriver/mac64/87.0.4280.88/chromedriver] found in cache
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:49903/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+urllib3.connectionpool: DEBUG: Starting new HTTP connection (1): 127.0.0.1:49903
+urllib3.connectionpool: DEBUG: http://127.0.0.1:49903 "POST /session HTTP/1.1" 200 727
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:49903/session/9d231de6f4a7100393c037f3bb56d98a/url {"url": "http://www.caiyunapp.com/map"}
+urllib3.connectionpool: DEBUG: http://127.0.0.1:49903 "POST /session/9d231de6f4a7100393c037f3bb56d98a/url HTTP/1.1" 200 14
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:49903/session/9d231de6f4a7100393c037f3bb56d98a/actions {"actions": [{"type": "pointer", "parameters": {"pointerType": "mouse"}, "id": "mouse", "actions": [{"type": "pointerMove", "duration": 250, "x": 645, "y": 537, "origin": "pointer"}, {"type": "pointerDown", "duration": 0, "button": 0}, {"type": "pointerUp", "duration": 0, "button": 0}]}, {"type": "key", "id": "key", "actions": [{"type": "pause", "duration": 0}, {"type": "pause", "duration": 0}, {"type": "pause", "duration": 0}]}]}
+urllib3.connectionpool: DEBUG: http://127.0.0.1:49903 "POST /session/9d231de6f4a7100393c037f3bb56d98a/actions HTTP/1.1" 200 14
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:49903/session/9d231de6f4a7100393c037f3bb56d98a/url {}
+urllib3.connectionpool: DEBUG: http://127.0.0.1:49903 "GET /session/9d231de6f4a7100393c037f3bb56d98a/url HTTP/1.1" 404 1751
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+--------------------- >> end captured logging << ---------------------
+
+</pre>
+                                <h4>Details</h4>
+                                <pre>Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=87.0.4280.88)
+
+-------------------- >> begin captured stdout << ---------------------
+================test_case1============
+
+--------------------- >> end captured stdout << ----------------------
+-------------------- >> begin captured logging << --------------------
+WDM: INFO: Current google-chrome version is 87.0.4280
+WDM: INFO: Get LATEST driver version for 87.0.4280
+urllib3.connectionpool: DEBUG: Starting new HTTP connection (1): chromedriver.storage.googleapis.com:80
+urllib3.connectionpool: DEBUG: http://chromedriver.storage.googleapis.com:80 "GET /LATEST_RELEASE_87.0.4280 HTTP/1.1" 200 12
+WDM: INFO: Driver [/Users/yangjingjing/.wdm/drivers/chromedriver/mac64/87.0.4280.88/chromedriver] found in cache
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:49903/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+urllib3.connectionpool: DEBUG: Starting new HTTP connection (1): 127.0.0.1:49903
+urllib3.connectionpool: DEBUG: http://127.0.0.1:49903 "POST /session HTTP/1.1" 200 727
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:49903/session/9d231de6f4a7100393c037f3bb56d98a/url {"url": "http://www.caiyunapp.com/map"}
+urllib3.connectionpool: DEBUG: http://127.0.0.1:49903 "POST /session/9d231de6f4a7100393c037f3bb56d98a/url HTTP/1.1" 200 14
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:49903/session/9d231de6f4a7100393c037f3bb56d98a/actions {"actions": [{"type": "pointer", "parameters": {"pointerType": "mouse"}, "id": "mouse", "actions": [{"type": "pointerMove", "duration": 250, "x": 645, "y": 537, "origin": "pointer"}, {"type": "pointerDown", "duration": 0, "button": 0}, {"type": "pointerUp", "duration": 0, "button": 0}]}, {"type": "key", "id": "key", "actions": [{"type": "pause", "duration": 0}, {"type": "pause", "duration": 0}, {"type": "pause", "duration": 0}]}]}
+urllib3.connectionpool: DEBUG: http://127.0.0.1:49903 "POST /session/9d231de6f4a7100393c037f3bb56d98a/actions HTTP/1.1" 200 14
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+selenium.webdriver.remote.remote_connection: DEBUG: GET http://127.0.0.1:49903/session/9d231de6f4a7100393c037f3bb56d98a/url {}
+urllib3.connectionpool: DEBUG: http://127.0.0.1:49903 "GET /session/9d231de6f4a7100393c037f3bb56d98a/url HTTP/1.1" 404 1751
+selenium.webdriver.remote.remote_connection: DEBUG: Finished Request
+--------------------- >> end captured logging << ---------------------</pre>
+                            </div>
+                        </section>
+                </div>
+            </section>
 
     <h1>All tests</h1>
     <section>
-        <h2>test_caiyun (0 failures, 0 errors)</h2>
+        <h2>test_caiyun (0 failures, 1 errors)</h2>
         <ul>
-                <li><a class="success">test_case1</a></li>
+                <li><a class="failed" href="#test_caiyun:test_case1">test_case1</a></li>
         </ul>
     </section>
 </body>
