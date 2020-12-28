@@ -6,8 +6,11 @@ nosetests -s 执行并捕获输出
 nosetests  –h查看所有nose相关命令
 
 输出简单报告：
+
   安装nose-html-reporting
+  
   pip install nose-html-reporting
+  
   运行参数：
   --with-html	
     Enable plugin HtmlOutput: Output test results as pretty html.
